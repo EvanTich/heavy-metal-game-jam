@@ -30,12 +30,17 @@ public class LevelController : MonoBehaviour {
             if(Timer <= 0) {
                 Timer = 0;
                 gameEnded = true;
-                GameEnd();
+                EndGame();
             }
         }
     }
 
-    private void GameEnd() {
+    public static void StartGame() {
+        // start game
+
+    }
+
+    public static void EndGame() {
         // game end
 
     }
