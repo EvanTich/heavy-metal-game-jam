@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
     private float gravity = 14f;
     private float verticalVelocity;
 
+    public int Ore { get; set; }
+
     // Start is called before the first frame update
     void Start() {
 
