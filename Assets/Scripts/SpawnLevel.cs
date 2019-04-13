@@ -55,7 +55,7 @@ public class SpawnLevel : MonoBehaviour {
 
     private float MakeXY(ref int x, ref int y) {
         x = Random.Range(0, (int) terrain.size.x);
-        y = Random.Range(0, (int) terrain.size.y);
+        y = Random.Range(0, (int) terrain.size.z);
         return terrain.GetHeight(x, y);
     }
 
