@@ -8,10 +8,13 @@ public class Player : MonoBehaviour {
     CharacterController characterController;
 
 
-    public float speed = 30.0f;
-    public float rotation = 200.0f;
+    public float speed = 6f;
+    public float jumpForce = 10f;
 
-    private Vector3 moveDirection = Vector3.zero;
+    private float gravity = 14f;
+    private float verticalVelocity;
+
+    public int Ore { get; set; }
 
     // Start is called before the first frame update
     void Start() {
@@ -37,21 +40,46 @@ public class Player : MonoBehaviour {
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotation, 0);
         transform.Translate(0, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed);*/
 
-        
+
 
         //with characterController
 
+        float deltaX = Input.GetAxis("Horizontal") * speed;
+        float deltaZ = Input.GetAxis("Vertical") * speed;
+
+        Vector3 movement = new Vector3(deltaX, 0, deltaZ);
+        movement = Vector3.ClampMagnitude(movement, speed); //limits speed
+
         if (characterController.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection = moveDirection * speed;
+            verticalVelocity = -gravity * Time.deltaTime;
+            if (Input.GetButtonDown("Jump"))
+            {
+                verticalVelocity = jumpForce;
+            }
+        }
+        else
+        {
+            verticalVelocity -= gravity * Time.deltaTime;
         }
 
-        //Gravity
-        moveDirection.y -= 10f * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
+        movement.y = verticalVelocity; //applies gravity
+
+        movement = transform.TransformDirection(movement);
+        characterController.Move(movement * Time.deltaTime);
 
 
 
+    }
+
+
+   
+    void OnCollisionEnter(Collision col)
+    {
+        //destroy it when it hits
+        if(col.gameObject.tag == "PickUp")
+        {
+            Destroy(col.gameObject);
+        }
     }
 }

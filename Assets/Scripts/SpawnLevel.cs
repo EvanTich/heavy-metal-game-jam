@@ -28,6 +28,11 @@ public class SpawnLevel : MonoBehaviour {
     [SerializeField]
     private int seed;
 
+    [SerializeField]
+    private int amountOfStuff;
+    [SerializeField]
+    private int patchAmount;
+
     /// <summary>
     /// Spawns the level.
     /// </summary>
@@ -35,7 +40,7 @@ public class SpawnLevel : MonoBehaviour {
         terrain = level.terrainData;
         Random.InitState(seed);
 
-        for(int i = 0; i < 25; i++) {
+        for(int i = 0; i < amountOfStuff; i++) {
             SpawnOrePatch();
             SpawnRocks();
             SpawnBoulders();
@@ -50,7 +55,7 @@ public class SpawnLevel : MonoBehaviour {
 
     private float MakeXY(ref int x, ref int y) {
         x = Random.Range(0, (int) terrain.size.x);
-        y = Random.Range(0, (int) terrain.size.y);
+        y = Random.Range(0, (int) terrain.size.z);
         return terrain.GetHeight(x, y);
     }
 
@@ -58,7 +63,7 @@ public class SpawnLevel : MonoBehaviour {
         int x = 0, y = 0;
         MakeXY(ref x, ref y);
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < patchAmount; i++) {
             int newX = x + Random.Range(-5, 5), newY = y + Random.Range(-5, 5);
             float height = terrain.GetHeight(newX, newY);
             GameObject.Instantiate(obj, new Vector3(newX, height, newY), Quaternion.identity);
