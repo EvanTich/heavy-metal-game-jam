@@ -59,8 +59,9 @@ public class SpawnLevel : MonoBehaviour {
         MakeXY(ref x, ref y);
 
         for(int i = 0; i < 5; i++) {
-            float height = terrain.GetHeight(x + Random.Range(-5, 5), y + Random.Range(-5, 5));
-            GameObject.Instantiate(obj, new Vector3(x, height, y), Quaternion.identity);
+            int newX = x + Random.Range(-5, 5), newY = y + Random.Range(-5, 5);
+            float height = terrain.GetHeight(newX, newY);
+            GameObject.Instantiate(obj, new Vector3(newX, height, newY), Quaternion.identity);
         }
     }
 
