@@ -7,7 +7,9 @@ public class Player : MonoBehaviour {
     Rigidbody rb;
     CharacterController characterController;
 
-
+    public Vector3 networkPos;
+    Vector3 networkVel;
+    float lastNetworkUpdate;
     public float speed = 6f;
     public float jumpForce = 10f;
 
@@ -16,29 +18,12 @@ public class Player : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
-        /*rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;*/
-
-
         characterController = GetComponent<CharacterController>();
 
     }
 
     // Update is called once per frame
     void Update() {
-
-        //with rigidbody
-
-        /*float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-
-
-        transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotation, 0);
-        transform.Translate(0, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed);*/
-
-
 
         //with characterController
 
@@ -65,8 +50,6 @@ public class Player : MonoBehaviour {
 
         movement = transform.TransformDirection(movement);
         characterController.Move(movement * Time.deltaTime);
-
-
 
     }
 
