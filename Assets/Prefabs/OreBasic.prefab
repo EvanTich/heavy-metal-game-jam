@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7294321436676166212}
   - component: {fileID: 7294321436676166213}
   m_Layer: 0
-  m_Name: Ore
-  m_TagString: Untagged
+  m_Name: OreBasic
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

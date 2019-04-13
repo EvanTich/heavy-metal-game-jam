@@ -71,9 +71,13 @@ public class Player : MonoBehaviour {
     }
 
 
-    //destroys anything that collides with it for now
+   
     void OnCollisionEnter(Collision col)
     {
-        Destroy(col.gameObject);
+        //destroy it when it hits
+        if(col.gameObject.tag == "PickUp")
+        {
+            Destroy(col.gameObject);
+        }
     }
 }
