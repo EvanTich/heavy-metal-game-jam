@@ -5,9 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class LevelController : MonoBehaviour {
 
+    public static float Timer { get; private set; }
+    private static bool gameEnded;
+
     public static Dictionary<string, int> OreAmounts { get; private set; }
 
     static LevelController() {
+        Timer = 60;
+        gameEnded = false;
         OreAmounts = new Dictionary<string, int>();
     }
 
@@ -20,7 +25,19 @@ public class LevelController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        if(!gameEnded) {
+            Timer -= Time.deltaTime;
+            if(Timer <= 0) {
+                Timer = 0;
+                gameEnded = true;
+                GameEnd();
+            }
+        }
+    }
+
+    private void GameEnd() {
+        // game end
+
     }
 
     private void OnTriggerEnter(Collider other) {
