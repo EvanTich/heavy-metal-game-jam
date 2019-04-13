@@ -7,17 +7,31 @@ public class Player : MonoBehaviour {
     Rigidbody rb;
     CharacterController characterController;
 
+<<<<<<< HEAD
     public Vector3 networkPos;
     Vector3 networkVel;
     float lastNetworkUpdate;
     public float speed = 6f;
+=======
+    public float strengthOfAttraction = 3f;
+
+    public static float constSpeed = 15f;
+    public float min = constSpeed * 0.10f;
+    public float speed = 15f;
+>>>>>>> c5fae7c2e9ee00a4a8ea63056e6a6c80ee9ec4f2
     public float jumpForce = 10f;
 
-    private float gravity = 14f;
+    private float gravity = 10f;
     private float verticalVelocity;
+
+    public int Ore { get; set; }
 
     // Start is called before the first frame update
     void Start() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5fae7c2e9ee00a4a8ea63056e6a6c80ee9ec4f2
         characterController = GetComponent<CharacterController>();
 
     }
@@ -25,6 +39,10 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5fae7c2e9ee00a4a8ea63056e6a6c80ee9ec4f2
         //with characterController
 
         float deltaX = Input.GetAxis("Horizontal") * speed;
@@ -54,9 +72,34 @@ public class Player : MonoBehaviour {
     }
 
 
-    //destroys anything that collides with it for now
+   
     void OnCollisionEnter(Collision col)
     {
-        Destroy(col.gameObject);
+        //destroy it when it hits
+        if(col.gameObject.tag == "PickUp")
+        {
+            //add max iron count
+            if (speed >  min )
+            {
+                Destroy(col.gameObject);
+                speed -= speed * .10f;
+                gravity += 5;
+            }
+        }else if(col.gameObject.tag == "Player")
+        {
+
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.gameObject.tag == "PickUp")
+        {
+            Vector3 direction = transform.position - other.transform.position;
+            other.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
+            Debug.Log(strengthOfAttraction + " " + direction);
+        }
     }
 }

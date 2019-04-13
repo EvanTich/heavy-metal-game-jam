@@ -33,6 +33,8 @@ public class SpawnLevel : MonoBehaviour {
     [SerializeField]
     private int patchAmount;
 
+    private GameObject player;
+
     /// <summary>
     /// Spawns the level.
     /// </summary>
@@ -54,8 +56,14 @@ public class SpawnLevel : MonoBehaviour {
     }
 
     private float MakeXY(ref int x, ref int y) {
-        x = Random.Range(0, (int) terrain.size.x);
-        y = Random.Range(0, (int) terrain.size.y);
+        int maxX = (int)terrain.size.x;
+        int maxY = (int)terrain.size.z;
+
+        do {
+            x = Random.Range(0, maxX);
+            y = Random.Range(0, maxY);
+        } while(Mathf.Abs(x - maxX / 2) <= 5 && Mathf.Abs(y - maxY / 2) <= 5);
+
         return terrain.GetHeight(x, y);
     }
 
