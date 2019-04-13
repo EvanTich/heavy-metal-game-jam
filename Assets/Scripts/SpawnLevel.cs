@@ -33,6 +33,8 @@ public class SpawnLevel : MonoBehaviour {
     [SerializeField]
     private int patchAmount;
 
+    private GameObject player;
+
     /// <summary>
     /// Spawns the level.
     /// </summary>
