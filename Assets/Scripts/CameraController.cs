@@ -1,21 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraController : MonoBehaviour
-{
+public class CameraController : MonoBehaviour {
 
-    public GameObject player;       //Public variable to store a reference to the player game object
+    public GameObject player;
+    private Vector3 offset;
 
-
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
-
-    void Start()
-    {
+    void Start() {
         offset = transform.position - player.transform.position;
     }
 
-    void LateUpdate()
-    {
+    void LateUpdate() {
         transform.position = player.transform.position + offset;
     }
 }

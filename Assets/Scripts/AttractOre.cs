@@ -35,6 +35,10 @@ public class AttractOre : MonoBehaviour {
             inside = true;
             this.other = other.gameObject;
         }
+        else if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("another player!");
+        }
     }
 
     void OnTriggerExit(Collider other)
