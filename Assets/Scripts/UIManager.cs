@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class UIManager : MonoBehaviour
     public Player p4;
     private static byte numPlayers;
     private byte players;
-
+    private int time = 0;
     private bool gameStarted;
 
     private void Start() {
@@ -203,58 +204,66 @@ public class UIManager : MonoBehaviour
     private void Update() {
         if(!gameStarted)
             return;
+        if (LevelController.Timer > 0) {
+            if (players == 1) {
+                Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
+                Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
 
-        if (players == 1) {
-            Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
-            Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
+                resources1.text = "Resource Count: " + p1.Ore;
+                timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            }
+            if (players == 2) {
+                Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
+                Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
+                Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
+                Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
 
-            resources1.text = "Resource Count: " + p1.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                resources1.text = "Resource Count: " + p1.Ore;
+                resources2.text = "Resource Count: " + p2.Ore;
+                timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            }
+            if (players == 3) {
+                Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
+                Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
+                Text resources3 = GameObject.Find("Canvas3/Resources").GetComponent<Text>();
+                Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
+                Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
+                Text timer3 = GameObject.Find("Canvas3/Timer").GetComponent<Text>();
+
+                resources1.text = "Resource Count: " + p1.Ore;
+                resources2.text = "Resource Count: " + p2.Ore;
+                resources3.text = "Resource Count: " + p3.Ore;
+                timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            }
+            if (players == 4) {
+                Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
+                Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
+                Text resources3 = GameObject.Find("Canvas3/Resources").GetComponent<Text>();
+                Text resources4 = GameObject.Find("Canvas4/Resources").GetComponent<Text>();
+                Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
+                Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
+                Text timer3 = GameObject.Find("Canvas3/Timer").GetComponent<Text>();
+                Text timer4 = GameObject.Find("Canvas4/Timer").GetComponent<Text>();
+
+                resources1.text = "Resource Count: " + p1.Ore;
+                resources2.text = "Resource Count: " + p2.Ore;
+                resources3.text = "Resource Count: " + p3.Ore;
+                resources4.text = "Resource Count: " + p4.Ore;
+                timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+                timer4.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            }
         }
-        if (players == 2) {
-            Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
-            Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
-            Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
-            Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
-
-            resources1.text = "Resource Count: " + p1.Ore;
-            resources2.text = "Resource Count: " + p2.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+        else if(SceneManager.GetActiveScene().name == "Gameover" && LevelController.Timer <= 0) {
+            SceneManager.LoadScene("Gameover", LoadSceneMode.Single);
         }
-        if (players == 3) {
-            Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
-            Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
-            Text resources3 = GameObject.Find("Canvas3/Resources").GetComponent<Text>();
-            Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
-            Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
-            Text timer3 = GameObject.Find("Canvas3/Timer").GetComponent<Text>();
-           
-            resources1.text = "Resource Count: " + p1.Ore;
-            resources2.text = "Resource Count: " + p2.Ore;
-            resources3.text = "Resource Count: " + p3.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-        }
-        if (players == 4) {
-            Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
-            Text resources2 = GameObject.Find("Canvas2/Resources").GetComponent<Text>();
-            Text resources3 = GameObject.Find("Canvas3/Resources").GetComponent<Text>();
-            Text resources4 = GameObject.Find("Canvas4/Resources").GetComponent<Text>();
-            Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
-            Text timer2 = GameObject.Find("Canvas2/Timer").GetComponent<Text>();
-            Text timer3 = GameObject.Find("Canvas3/Timer").GetComponent<Text>();
-            Text timer4 = GameObject.Find("Canvas4/Timer").GetComponent<Text>();
-
-            resources1.text = "Resource Count: " + p1.Ore;
-            resources2.text = "Resource Count: " + p2.Ore;
-            resources3.text = "Resource Count: " + p3.Ore;
-            resources4.text = "Resource Count: " + p4.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
-            timer4.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+        if(SceneManager.GetActiveScene().name == "Gameover" && time == 0) {
+            Text gameover = GameObject.Find("GameOver").GetComponent<Text>();
+            //gameover.text += stuff
         }
     }
 }
