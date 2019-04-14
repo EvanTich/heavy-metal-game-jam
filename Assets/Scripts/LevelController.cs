@@ -69,7 +69,7 @@ public class LevelController : MonoBehaviour {
 
             var obj = GameObject.Instantiate(
                 player, 
-                new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y, 3 * Mathf.Sin(curr) + transform.position.z), 
+                new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y + 5, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
             );
             obj.name = names[i];
