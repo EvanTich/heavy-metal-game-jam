@@ -10,19 +10,29 @@ public class Player : MonoBehaviour {
     public float strengthOfAttraction = 3f;
 
     public static float constSpeed = 15f;
-    public float min = constSpeed * 0.10f;
-    public float speed = 15f;
-    public float jumpForce = 10f;
+    public float minSpeed = 5f;
+    public float verticalVelocity;
 
-    private float gravity = 8f;
-    private float verticalVelocity;
+    private Vector3 moveDirection = Vector3.zero;
+    private CharacterController controller;
+
+    public float speed = 15f;
+    public float rotSpeed = 90f;
+    public float jumpSpeed = 20f;
+    public float gravity = 40f;
+    public int num;
+
+    public bool insidePlayer = true;
+    GameObject other;
+
+
 
     public int Ore { get; set; }
 
     // Start is called before the first frame update
     void Start() {
         characterController = GetComponent<CharacterController>();
-
+    
     }
 
     // Update is called once per frame
@@ -30,45 +40,55 @@ public class Player : MonoBehaviour {
 
         //with characterController
 
-        float deltaX = Input.GetAxis("Horizontal") * speed;
-        float deltaZ = Input.GetAxis("Vertical") * speed;
-
-        Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-        movement = Vector3.ClampMagnitude(movement, speed); //limits speed
-
+        // rotate character with horizontal keys:
+        transform.Rotate(0, Input.GetAxis("Horizontal" + num) * 90f * Time.deltaTime, 0);
         if (characterController.isGrounded)
         {
-            verticalVelocity = -gravity * Time.deltaTime;
-            if (Input.GetButtonDown("Jump"))
+      
+            moveDirection = Vector3.forward * Input.GetAxis("Vertical" + num);
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            if (Input.GetButton("Jump" + num))
             {
-                verticalVelocity = jumpForce;
+                moveDirection.y = jumpSpeed;
             }
         }
-        else
+        // Apply gravity
+        moveDirection.y -= gravity * Time.deltaTime;
+        // convert velocity to displacement and move character:
+        characterController.Move(moveDirection * Time.deltaTime);
+
+        if (insidePlayer)
         {
-            verticalVelocity -= gravity * Time.deltaTime;
+            if (other != null)
+            {
+                Vector3 direction = transform.position - other.transform.position;
+                Debug.Log("pull here");
+                other.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
+                //Debug.Log(strengthOfAttraction + " " + direction);
+
+                /*Vector3 direction2 = other.transform.position - transform.position;
+                gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction2);*/
+            }
+
         }
 
-        movement.y = verticalVelocity; //applies gravity
-
-        movement = transform.TransformDirection(movement);
-        characterController.Move(movement * Time.deltaTime);
 
     }
 
 
    
-    void OnCollisionEnter(Collision col)
+    /*void OnCollisionEnter(Collision col)
     {
         //destroy it when it hits
-        if(col.gameObject.tag == "PickUp")
+        if (col.gameObject.tag == "PickUp")
         {
             //add max iron count
-            if (speed > min )
+            if (speed > minSpeed)
             {
                 Destroy(col.gameObject);
-                speed -= speed * .10f;
-                gravity += gravity *.25f;
+                speed -= speed *.05f;
+                jumpSpeed -= jumpSpeed * .05f;
                 Ore++;
                 Debug.Log(Ore);
             }
@@ -77,10 +97,55 @@ public class Player : MonoBehaviour {
                 Debug.Log("ore at max");
             }
         }
+        if (col.gameObject.tag == "Player")
+        {
+            Debug.Log("HIT A PLAYER IN PLAYER CLASS!!!");
+        }
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        //destroy it when it hits
+        if (other.gameObject.tag == "PickUp")
+        {
+            //add max iron count
+            if (speed > minSpeed)
+            {
+                Destroy(other.gameObject);
+                speed -= speed * .05f;
+                jumpSpeed -= jumpSpeed * .05f;
+                Ore++;
+                Debug.Log(Ore);
+            }
+            else
+            {
+                Debug.Log("ore at max");
+            }
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            //make them stick together
+            // Debug.Log("debug");
+            Debug.Log("NEXT TO A PLAYER!!");
+            insidePlayer = true;
+            this.other = other.gameObject;
+        }
+
+        //ebug.Log(other.gameObject.name);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            insidePlayer = false;
+            this.other = null;
+        }
     }
 
 
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
 
         if (other.gameObject.tag == "PickUp")
@@ -89,5 +154,5 @@ public class Player : MonoBehaviour {
             other.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
             Debug.Log(strengthOfAttraction + " " + direction);
         }
-    }
+    }*/
 }
