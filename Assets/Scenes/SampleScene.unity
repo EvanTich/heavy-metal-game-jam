@@ -181,63 +181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &251505089
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 251505091}
-  - component: {fileID: 251505090}
-  m_Layer: 0
-  m_Name: LevelCreator
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &251505090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251505089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d870de3acfe49b54bae314301957995f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 1253690919}
-  ores:
-  - {fileID: 100000, guid: 126a7d18be2c73d47a2291508d39e8a5, type: 3}
-  - {fileID: 100000, guid: 6fca3840d13470a49a5a52c9f132af22, type: 3}
-  - {fileID: 100000, guid: 5b788642d37d2e644bdb07cdd50edbc7, type: 3}
-  - {fileID: 100000, guid: 3a02f34b2573f1040879a82784a3ac93, type: 3}
-  - {fileID: 100000, guid: 2be4e28e147810344868339304b88bc7, type: 3}
-  rock: {fileID: 100000, guid: b82a5d11add469e418a3c474c793ed7d, type: 3}
-  boulder: {fileID: 100000, guid: 15ccaee74f9fee24fbf4f7e21d8f9442, type: 3}
-  stalagmite: {fileID: 100000, guid: 1f17e5e20452e044cb0dd76666ce4003, type: 3}
-  column: {fileID: 100000, guid: 776a68659299ab548ac25d6c2eb99045, type: 3}
-  seed: 0
-  amountOfStuff: 500
-  patchAmount: 10
---- !u!4 &251505091
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251505089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 470.2156, y: -72.40254, z: 69.29675}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1253690917
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1995564317
 PrefabInstance:
@@ -367,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 4142472217167791426, guid: 43f58f6d9a557a44bba509ae0baa15e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4142472217167791426, guid: 43f58f6d9a557a44bba509ae0baa15e8,
         type: 3}
@@ -436,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 3567544321938143017, guid: 015efe30b6f297a4aa705dea794ac818,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3567544321938143017, guid: 015efe30b6f297a4aa705dea794ac818,
         type: 3}
@@ -455,3 +398,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015efe30b6f297a4aa705dea794ac818, type: 3}
+--- !u!1 &2791055190827332612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2791055190827332612, guid: 015efe30b6f297a4aa705dea794ac818,
+    type: 3}
+  m_PrefabInstance: {fileID: 614519241723770291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2791055190827332613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791055190827332612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d870de3acfe49b54bae314301957995f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 1253690919}
+  ores:
+  - {fileID: 100000, guid: 126a7d18be2c73d47a2291508d39e8a5, type: 3}
+  - {fileID: 100000, guid: 6fca3840d13470a49a5a52c9f132af22, type: 3}
+  - {fileID: 100000, guid: 5b788642d37d2e644bdb07cdd50edbc7, type: 3}
+  - {fileID: 100000, guid: 3a02f34b2573f1040879a82784a3ac93, type: 3}
+  - {fileID: 100000, guid: 2be4e28e147810344868339304b88bc7, type: 3}
+  rock: {fileID: 100000, guid: b82a5d11add469e418a3c474c793ed7d, type: 3}
+  boulder: {fileID: 100000, guid: 15ccaee74f9fee24fbf4f7e21d8f9442, type: 3}
+  stalagmite: {fileID: 100000, guid: 1f17e5e20452e044cb0dd76666ce4003, type: 3}
+  column: {fileID: 100000, guid: 776a68659299ab548ac25d6c2eb99045, type: 3}
+  seed: 0
+  amountOfStuff: 500
+  patchAmount: 10

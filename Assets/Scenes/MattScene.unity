@@ -392,6 +392,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a4197c8c0391642915d4d066b34708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &980266084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980266087}
+  - component: {fileID: 980266086}
+  - component: {fileID: 980266085}
+  m_Layer: 0
+  m_Name: Level Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &980266085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980266084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b8f6bce2b7f214c8ab78bff66af828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8376208699690573200, guid: 770e673963206d74dac3f9abcce9bee3, type: 3}
+--- !u!65 &980266086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980266084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &980266087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980266084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 245.46312, y: 126.26721, z: 43.734802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063230763
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +601,10 @@ MonoBehaviour:
     type: 3}
   camPrefab: {fileID: 1546141896879190332, guid: a91d7ebb7cedcfe4cbf8bd4db6d05c10,
     type: 3}
+  p1Name: 
+  p2Name: 
+  p3Name: 
+  p4Name: 
 --- !u!1 &1326718547
 GameObject:
   m_ObjectHideFlags: 0
