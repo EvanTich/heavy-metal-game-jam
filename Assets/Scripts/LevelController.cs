@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour {
     private GameObject player;
 
     static LevelController() {
-        Timer = 60;
+        Timer = 6000;
         gameEnded = false;
     }
 
@@ -78,6 +78,8 @@ public class LevelController : MonoBehaviour {
 
             curr += rotation;
         }
+
+        Timer = 60;
     }
 
     public static void EndGame() {

@@ -57,7 +57,7 @@ public class Player : MonoBehaviour {
                 stunned = false;
         }
 
-        animator.SetFloat("speed", moveDirection.magnitude);
+        animator.SetFloat("speed", characterController.velocity.magnitude); // maybe will work better
 
         // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;
