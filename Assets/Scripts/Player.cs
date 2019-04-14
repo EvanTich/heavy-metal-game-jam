@@ -57,7 +57,8 @@ public class Player : MonoBehaviour {
                 stunned = false;
         }
 
-        animator.SetFloat("speed", moveDirection.magnitude);
+        if(animator != null)
+            animator.SetFloat("speed", characterController.velocity.magnitude); // maybe will work better
 
         // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;
@@ -67,14 +68,14 @@ public class Player : MonoBehaviour {
         if (insidePlayer && other != null)
         {
             Player plr = other.GetComponent<Player>();
-            if (Ore > plr.Ore)
+            if (plr != null && Ore > plr.Ore)
             {
                 //MAKE THEM NOTH DROP SOME ORE
                 int dropped = Ore / 2;
                 speed += dropped * speed * .05f;
                 jumpSpeed += dropped * jumpSpeed * .05f;
                 Ore -= dropped;
-                other.GetComponent<Player>().Ore += dropped;
+                plr.Ore += dropped;
                 stunned = true;
                 stunnedTimer = dropped / 2;
                 insidePlayer = false;
