@@ -49,7 +49,11 @@ public class LevelController : MonoBehaviour {
 
     private void StartGame_(params string[] names) {
         int num;
-        for(num = 0; num < names.Length && names[num] != null; num++);
+        for(num = 0; num < names.Length; num++)
+            if(names[num] == null) {
+                num--;
+                break;
+            }
 
         Names = new string[num];
 
