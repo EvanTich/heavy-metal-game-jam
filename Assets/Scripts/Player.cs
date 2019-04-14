@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
     public bool insidePlayer = false;
     GameObject other;
 
-    //public static int total = 0;
+    public static int total = 0;
 
 
 
@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         characterController = GetComponent<CharacterController>();
-        // total++;
-        //num = total;
+        total++;
+        num = total;
     
     }
 
