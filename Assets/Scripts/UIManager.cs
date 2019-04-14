@@ -264,6 +264,28 @@ public class UIManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Gameover" && time == 0) {
             Text gameover = GameObject.Find("GameOver").GetComponent<Text>();
             //gameover.text += stuff
+
+            var tuples = new List<(string, int)>();
+            switch(players) {
+                case 4:
+                    tuples[3] = (p4Name, p4.Ore);
+                    goto case 3;
+                case 3:
+                    tuples[2] = (p3Name, p3.Ore);
+                    goto case 2;
+                case 2:
+                    tuples[1] = (p2Name, p2.Ore);
+                    goto case 1;
+                case 1:
+                    tuples[0] = (p1Name, p1.Ore);
+                    break;
+            }
+
+            tuples.Sort((a, b) => a.Item2 - b.Item2);
+
+            foreach(var tuple in tuples) {
+                gameover.text += "\n" + tuple.Item1 + " - " + tuple.Item2;
+            }
         }
     }
 }
