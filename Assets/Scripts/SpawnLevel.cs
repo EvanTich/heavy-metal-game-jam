@@ -33,8 +33,14 @@ public class SpawnLevel : MonoBehaviour {
     /// Spawns the level.
     /// </summary>
     void Start() {
+        if(ores.Length == 0) {
+            Debug.Log("Get your ore in the right place!");
+            return;
+        }
+
         terrain = level.terrainData;
-        Random.InitState(seed);
+        if(seed != -1)
+            Random.InitState(seed);
 
         for(int i = 0; i < amountOfStuff; i++) {
             SpawnOrePatch();
@@ -73,7 +79,7 @@ public class SpawnLevel : MonoBehaviour {
     }
 
     private GameObject GetRandomOre() {
-        return ores[Random.Range(0, ores.Length)];
+        return ores[(int)(Random.value * ores.Length)];
     }
 
     private void SpawnOrePatch() {

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b8f6bce2b7f214c8ab78bff66af828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8376208699690573200, guid: 770e673963206d74dac3f9abcce9bee3, type: 3}
 --- !u!114 &2791055190827332613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,13 +135,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 0}
   ores:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  rock: {fileID: 0}
-  boulder: {fileID: 0}
-  stalagmite: {fileID: 0}
-  column: {fileID: 0}
-  seed: 0
-  amountOfStuff: 500
+  - {fileID: 2823664178066412866, guid: adbe018a7e7dc1345bd36bf61c56d2c6, type: 3}
+  - {fileID: 7895084661907710033, guid: 3f2e92073d5e6cb438a0481cc248953d, type: 3}
+  - {fileID: 7237912520214900864, guid: 3e8e167c0c48f174abacc8925d84490b, type: 3}
+  rock: {fileID: 1921535437266879502, guid: 7aeada07d53027d4fa3dbc6a0cd08111, type: 3}
+  boulder: {fileID: 2509358015513624397, guid: a7469bcc3f2f511468ed206eb4bf84f0, type: 3}
+  stalagmite: {fileID: 9194765154364519457, guid: 147f3ac651a3c2f41bf1784cd9fe949d,
+    type: 3}
+  column: {fileID: 4696027280060595853, guid: 94b72b9efa34374459167a88cf68a3e8, type: 3}
+  seed: -1
+  amountOfStuff: 50
   patchAmount: 10

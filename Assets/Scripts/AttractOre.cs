@@ -17,9 +17,11 @@ public class AttractOre : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        foreach(var ore in ores) { 
-            Vector3 direction = transform.position - ore.transform.position;
-            ore.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
+        foreach(var ore in ores) {
+            if( ore!=null) {
+                Vector3 direction = transform.position - ore.transform.position;
+                ore.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
+            }
         }
     }
 
