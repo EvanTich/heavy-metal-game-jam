@@ -26,6 +26,7 @@ public class AttractOre : MonoBehaviour {
     {
         if (other.gameObject.tag == "PickUp")
         {
+            other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
             ores.Add(other.gameObject);
         }
     }
