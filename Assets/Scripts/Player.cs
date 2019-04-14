@@ -18,14 +18,14 @@ public class Player : MonoBehaviour {
 
     public float speed = 15f;
     public float rotSpeed = 90f;
-    public float jumpSpeed = 20f;
+    public float jumpSpeed = 30f;
     public float gravity = 40f;
     public int num;
 
-    public bool insidePlayer = true;
+    public bool insidePlayer = false;
     GameObject other;
 
-    static int total = 0;
+    //public static int total = 0;
 
 
 
@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         characterController = GetComponent<CharacterController>();
-        total++;
-        num = total;
+        // total++;
+        //num = total;
     
     }
 
@@ -64,15 +64,15 @@ public class Player : MonoBehaviour {
 
         if (insidePlayer)
         {
-            if (other != null)
+            if (other != null && Ore>0)
             {
-                Vector3 direction = transform.position - other.transform.position;
-                Debug.Log("pull here");
-                other.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
-                //Debug.Log(strengthOfAttraction + " " + direction);
-
-                /*Vector3 direction2 = other.transform.position - transform.position;
-                gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction2);*/
+                //MAKE THEM NOTH DROP SOME ORE
+                //Debug.Log("BOTH PLAYERS DROPPED SOME ORE, NOW HOLD: " + Ore);
+                speed += speed * .05f;
+                jumpSpeed += jumpSpeed * .05f;
+                Ore--;
+                Debug.Log("BOTH PLAYERS DROPPED SOME ORE, NOW HOLD: " + Ore);
+                insidePlayer = false;
             }
 
         }
@@ -120,18 +120,15 @@ public class Player : MonoBehaviour {
                 speed -= speed * .05f;
                 jumpSpeed -= jumpSpeed * .05f;
                 Ore++;
-                Debug.Log(Ore);
+                //Debug.Log(Ore);
             }
             else
             {
                 Debug.Log("ore at max");
             }
         }
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject!= gameObject)
         {
-            //make them stick together
-            // Debug.Log("debug");
-            Debug.Log("NEXT TO A PLAYER!!");
             insidePlayer = true;
             this.other = other.gameObject;
         }
