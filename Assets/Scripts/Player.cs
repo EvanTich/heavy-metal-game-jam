@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
     public bool insidePlayer = true;
     GameObject other;
 
+    static int total = 0;
+
 
 
     public int Ore { get; set; }
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         characterController = GetComponent<CharacterController>();
+        total++;
+        num = total;
     
     }
 
