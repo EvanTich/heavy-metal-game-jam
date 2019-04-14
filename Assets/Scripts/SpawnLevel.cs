@@ -58,7 +58,7 @@ public class SpawnLevel : MonoBehaviour {
             y = Random.Range(0, maxY);
         } while(Mathf.Abs(x - maxX / 2) <= 5 && Mathf.Abs(y - maxY / 2) <= 5);
         
-        return terrain.GetHeight(x, y) - terrain.GetSteepness(x, y);
+        return level.SampleHeight(new Vector3(x, 0, y));
     }
 
     private void SpawnObj(GameObject obj) {
@@ -67,7 +67,7 @@ public class SpawnLevel : MonoBehaviour {
 
         for(int i = 0; i < patchAmount; i++) {
             int newX = x + Random.Range(-5, 5), newY = y + Random.Range(-5, 5);
-            float height = terrain.GetHeight(newX, newY);
+            float height = level.SampleHeight(new Vector3(newX, 0, newY)) + obj.GetComponent<Renderer>().bounds.size.y / 2;
             GameObject.Instantiate(obj, new Vector3(newX, height, newY), Quaternion.Euler(0, Random.Range(0, 359), 0));
         }
     }
@@ -86,7 +86,7 @@ public class SpawnLevel : MonoBehaviour {
 
     private GameObject SpawnSingleObj(GameObject obj, bool onlyY = true) {
         int x = 0, y = 0;
-        float h = MakeXY(ref x, ref y);
+        float h = MakeXY(ref x, ref y) + obj.GetComponent<Renderer>().bounds.size.y / 2 -1;
 
         return GameObject.Instantiate(obj, new Vector3(x, h, y), onlyY ? Quaternion.Euler(0, Random.Range(0, 359), 0) : Random.rotation);
     }
@@ -98,7 +98,7 @@ public class SpawnLevel : MonoBehaviour {
         var ore = GetRandomOre();
         var vertices = mesh.vertices;
         for(var i = 0; i < vertices.Length; i++) {
-            if(Random.value > .2)
+            if(Random.value > .025)
                 continue;
 
             var spawnPoint = obj.transform.TransformPoint(vertices[i]);

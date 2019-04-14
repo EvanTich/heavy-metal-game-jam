@@ -15,8 +15,6 @@ public class LevelController : MonoBehaviour {
     public static int[] OreAmounts { get; private set; }
 
     [SerializeField]
-    private GameObject collectionPoint;
-    [SerializeField]
     private GameObject player;
 
     static LevelController() {
@@ -44,28 +42,29 @@ public class LevelController : MonoBehaviour {
         }
     }
 
-    public static void StartGame() {
-        _instance.StartGame_();
+    public static void StartGame(params string[] names) {
+        _instance.StartGame_(names);
     }
 
-    private void StartGame_() {
-        var playerNameObjects = GameObject.FindGameObjectsWithTag("PlayerNames");
+    private void StartGame_(params string[] names) {
+        int num;
+        for(num = 0; names[num] != null; num++);
 
-        float rotation = Mathf.Deg2Rad * 360 / playerNameObjects.Length;
+        Names = new string[num];
+
+        float rotation = Mathf.Deg2Rad * 360 / num;
         float curr = 0;
-
-        Names = new string[playerNameObjects.Length];
+        
         OreAmounts = new int[Names.Length];
 
-        for(int i = 0; i < playerNameObjects.Length; i++) {
-            var name = playerNameObjects[i].GetComponent<InputField>().text;
-            Names[i] = name;
+        for(int i = 0; i < Names.Length; i++) {
+            Names[i] = names[i];
 
             GameObject.Instantiate(
                 player, 
                 new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
-            ).name = name;
+            ).name = names[i];
             curr += rotation;
         }
     }
