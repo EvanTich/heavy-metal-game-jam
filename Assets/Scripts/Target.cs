@@ -24,8 +24,6 @@ public class Target : MonoBehaviour
     {
         if (target == null)
         {
-            Debug.LogWarning("Missing target ref !", this);
-
             return;
         }
 
