@@ -56,11 +56,10 @@ public class SpawnLevel : MonoBehaviour {
     }
 
     private float MakeXY(ref int x, ref int y) {
-
         do {
             x = Random.Range(0, (int)terrain.size.x);
             y = Random.Range(0, (int)terrain.size.z);
-        } while(Mathf.Abs(x - transform.position.x) <= 5 && Mathf.Abs(y - transform.position.z) <= 5);
+        } while(Mathf.Abs(x - transform.position.x) <= 10 && Mathf.Abs(y - transform.position.z) <= 10);
         
         return level.SampleHeight(new Vector3(x, 0, y));
     }
