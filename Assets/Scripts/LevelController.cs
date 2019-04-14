@@ -93,8 +93,11 @@ public class LevelController : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
             string name = other.gameObject.name;
-            int ore = other.gameObject.GetComponent<Player>().Ore;
-            other.gameObject.GetComponent<Player>().Ore = 0;
+            var plr = other.gameObject.GetComponent<Player>();
+            int ore = plr.Ore;
+            plr.Ore = 0;
+            plr.speed = Player.maxSpeed;
+            plr.jumpSpeed = Player.maxJumpSpeed;
 
             for(int i = 0; i < Names.Length; i++)
                 if(Names[i] == name) { 
