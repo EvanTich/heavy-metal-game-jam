@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b8f6bce2b7f214c8ab78bff66af828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8376208699690573200, guid: 770e673963206d74dac3f9abcce9bee3, type: 3}
+  players: []
 --- !u!65 &980266086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -627,6 +627,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClickedNumber3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335366950019, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_HorizontalAxis
+      value: Horizontal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335366950019, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_VerticalAxis
+      value: Vertical1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f89076a6391e249bbe189c031efe42, type: 3}

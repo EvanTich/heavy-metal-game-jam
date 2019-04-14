@@ -287,8 +287,14 @@ public class UIManager : MonoBehaviour
                 timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
                 timer4.text = "Time Left: " + LevelController.Timer.ToString("0.00");
             }
-        }
+        }    
+    }
 
-        
+    public void OnClickQuit() {
+        Application.Quit();
+    }
+
+    public void OnClickAgain() {
+        SceneManager.LoadScene("MainScene");
     }
 }
