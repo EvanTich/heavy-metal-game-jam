@@ -92,7 +92,7 @@ public class SpawnLevel : MonoBehaviour {
     }
 
     private void SpawnBoulders() {
-        var obj = SpawnSingleObj(boulder, false);
+        var obj = SpawnSingleObj(boulder);
         var mesh = obj.GetComponent<MeshFilter>().mesh;
 
         var ore = GetRandomOre();

@@ -396,37 +396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 1253690919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015efe30b6f297a4aa705dea794ac818, type: 3}
---- !u!1 &2791055190827332612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2791055190827332612, guid: 015efe30b6f297a4aa705dea794ac818,
-    type: 3}
-  m_PrefabInstance: {fileID: 614519241723770291}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2791055190827332613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2791055190827332612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d870de3acfe49b54bae314301957995f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 1253690919}
-  ores:
-  - {fileID: 100000, guid: 126a7d18be2c73d47a2291508d39e8a5, type: 3}
-  - {fileID: 100000, guid: 6fca3840d13470a49a5a52c9f132af22, type: 3}
-  - {fileID: 100000, guid: 5b788642d37d2e644bdb07cdd50edbc7, type: 3}
-  - {fileID: 100000, guid: 3a02f34b2573f1040879a82784a3ac93, type: 3}
-  - {fileID: 100000, guid: 2be4e28e147810344868339304b88bc7, type: 3}
-  rock: {fileID: 100000, guid: b82a5d11add469e418a3c474c793ed7d, type: 3}
-  boulder: {fileID: 100000, guid: 15ccaee74f9fee24fbf4f7e21d8f9442, type: 3}
-  stalagmite: {fileID: 100000, guid: 1f17e5e20452e044cb0dd76666ce4003, type: 3}
-  column: {fileID: 100000, guid: 776a68659299ab548ac25d6c2eb99045, type: 3}
-  seed: 0
-  amountOfStuff: 500
-  patchAmount: 10
