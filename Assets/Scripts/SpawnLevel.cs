@@ -7,23 +7,19 @@ public class SpawnLevel : MonoBehaviour {
     [SerializeField]
     private Terrain level;
     private TerrainData terrain;
-
+    
     [SerializeField]
-    private GameObject ore;
+    private GameObject[] ores;
     [SerializeField]
     private GameObject rock;
     [SerializeField]
     private GameObject boulder;
-
-    //[SerializeField]
-    //private GameObject stalagtite; // ceiling
+    
     [SerializeField]
     private GameObject stalagmite; // ground
 
     [SerializeField]
     private GameObject column; // ground to ceiling
-
-    private Random rand;
 
     [SerializeField]
     private int seed;
@@ -32,8 +28,6 @@ public class SpawnLevel : MonoBehaviour {
     private int amountOfStuff;
     [SerializeField]
     private int patchAmount;
-
-    private GameObject player;
 
     /// <summary>
     /// Spawns the level.
@@ -63,8 +57,8 @@ public class SpawnLevel : MonoBehaviour {
             x = Random.Range(0, maxX);
             y = Random.Range(0, maxY);
         } while(Mathf.Abs(x - maxX / 2) <= 5 && Mathf.Abs(y - maxY / 2) <= 5);
-
-        return terrain.GetHeight(x, y);
+        
+        return terrain.GetHeight(x, y) - terrain.GetSteepness(x, y);
     }
 
     private void SpawnObj(GameObject obj) {
@@ -74,27 +68,45 @@ public class SpawnLevel : MonoBehaviour {
         for(int i = 0; i < patchAmount; i++) {
             int newX = x + Random.Range(-5, 5), newY = y + Random.Range(-5, 5);
             float height = terrain.GetHeight(newX, newY);
-            GameObject.Instantiate(obj, new Vector3(newX, height, newY), Quaternion.identity);
+            GameObject.Instantiate(obj, new Vector3(newX, height, newY), Quaternion.Euler(0, Random.Range(0, 359), 0));
         }
     }
 
+    private GameObject GetRandomOre() {
+        return ores[Random.Range(0, ores.Length)];
+    }
+
     private void SpawnOrePatch() {
-        SpawnObj(ore);
+        SpawnObj(GetRandomOre());
     }
 
     private void SpawnRocks() {
         SpawnObj(rock);
     }
 
-    private void SpawnSingleObj(GameObject obj) {
+    private GameObject SpawnSingleObj(GameObject obj, bool onlyY = true) {
         int x = 0, y = 0;
         float h = MakeXY(ref x, ref y);
 
-        GameObject.Instantiate(obj, new Vector3(x, h, y), Quaternion.identity);
+        return GameObject.Instantiate(obj, new Vector3(x, h, y), onlyY ? Quaternion.Euler(0, Random.Range(0, 359), 0) : Random.rotation);
     }
 
     private void SpawnBoulders() {
-        SpawnSingleObj(boulder);
+        var obj = SpawnSingleObj(boulder, false);
+        var mesh = obj.GetComponent<MeshFilter>().mesh;
+
+        var ore = GetRandomOre();
+        var vertices = mesh.vertices;
+        for(var i = 0; i < vertices.Length; i++) {
+            if(Random.value > .2)
+                continue;
+
+            var spawnPoint = obj.transform.TransformPoint(vertices[i]);
+            var q = Random.Range(0, vertices.Length);
+            spawnPoint = obj.transform.TransformPoint(vertices[q]);
+            GameObject.Instantiate(ore, spawnPoint, Quaternion.identity);
+        }
+
     }
 
     private void SpawnStalagmite() {

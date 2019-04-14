@@ -68,6 +68,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void ClickedName() {
-        
+        LevelController.StartGame();
     }
 }
