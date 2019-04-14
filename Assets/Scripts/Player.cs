@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public float rotSpeed = 90f;
     public float jumpSpeed = 30f;
     public float gravity = 40f;
-    public int num;
+    public string num;
 
     public bool insidePlayer = false;
     GameObject other;
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
     void Start() {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        num = ++total;
+        num = "" + ++total;
     }
 
     // Update is called once per frame
