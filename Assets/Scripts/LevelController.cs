@@ -16,7 +16,7 @@ public class LevelController : MonoBehaviour {
     public static int[] OreAmounts { get; private set; }
 
     [SerializeField]
-    private GameObject[] players;
+    private GameObject player;
 
     static LevelController() {
         Timer = 6000;
@@ -70,7 +70,7 @@ public class LevelController : MonoBehaviour {
             Names[i] = names[i];
 
             var obj = GameObject.Instantiate(
-                players[i], 
+                player, 
                 new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y + 5, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
             );
