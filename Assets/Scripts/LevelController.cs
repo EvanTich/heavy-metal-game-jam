@@ -80,7 +80,7 @@ public class LevelController : MonoBehaviour {
         }
 
         gameStarted = true;
-        Timer = 6;
+        Timer = 60;
     }
 
     public static void EndGame() {

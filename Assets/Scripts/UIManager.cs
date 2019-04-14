@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance = null;
     public Camera cam1;
     public Canvas numberCanvas;
     public Canvas nameCanvasPrefab;
@@ -25,8 +26,16 @@ public class UIManager : MonoBehaviour
 
     private bool inGameOver;
 
-    private void Start() {
-        DontDestroyOnLoad(this);
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        }
+        else if(instance != this) {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+        cam1 = GameObject.Find("Camera").GetComponent<Camera>();
+        numberCanvas = GameObject.Find("UIPackage/PlayerNum").GetComponent<Canvas>();
     }
 
     public void OnClickedNumber1() {
