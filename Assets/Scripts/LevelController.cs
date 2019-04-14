@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour {
     public static int[] OreAmounts { get; private set; }
 
     [SerializeField]
-    private GameObject player;
+    private GameObject[] players;
 
     static LevelController() {
         Timer = 6000;
@@ -68,7 +68,7 @@ public class LevelController : MonoBehaviour {
             Names[i] = names[i];
 
             var obj = GameObject.Instantiate(
-                player, 
+                players[i], 
                 new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y + 5, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
             );
@@ -93,8 +93,11 @@ public class LevelController : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
             string name = other.gameObject.name;
-            int ore = other.gameObject.GetComponent<Player>().Ore;
-            other.gameObject.GetComponent<Player>().Ore = 0;
+            var plr = other.gameObject.GetComponent<Player>();
+            int ore = plr.Ore;
+            plr.Ore = 0;
+            plr.speed = Player.maxSpeed;
+            plr.jumpSpeed = Player.maxJumpSpeed;
 
             for(int i = 0; i < Names.Length; i++)
                 if(Names[i] == name) { 

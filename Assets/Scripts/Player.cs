@@ -11,9 +11,12 @@ public class Player : MonoBehaviour {
 
     private Vector3 moveDirection = Vector3.zero;
 
-    public float speed = 15f;
+    public const float maxSpeed = 15f;
+    public const float maxJumpSpeed = 30f;
+
+    public float speed = maxSpeed;
     public float rotSpeed = 90f;
-    public float jumpSpeed = 30f;
+    public float jumpSpeed = maxJumpSpeed;
     public float gravity = 40f;
     public string num;
 
@@ -100,10 +103,6 @@ public class Player : MonoBehaviour {
                 jumpSpeed -= jumpSpeed * .05f;
                 Ore++;
                 //Debug.Log(Ore);
-            }
-            else
-            {
-                Debug.Log("ore at max");
             }
         }
         if (other.gameObject.tag == "Player" && other.gameObject!= gameObject)
