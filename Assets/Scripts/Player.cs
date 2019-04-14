@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
 
     public static int total = 0;
 
+    public int TotalOre { get; set; }
     public int Ore { get; set; }
 
     // Start is called before the first frame update

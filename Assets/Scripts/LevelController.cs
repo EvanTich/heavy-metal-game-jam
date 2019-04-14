@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -11,8 +12,9 @@ public class LevelController : MonoBehaviour {
     public static float Timer { get; private set; }
     private static bool gameEnded;
 
+    private static bool gameStarted;
+
     public static string[] Names { get; private set; }
-    public static int[] OreAmounts { get; private set; }
 
     [SerializeField]
     private GameObject[] players;
@@ -33,7 +35,7 @@ public class LevelController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(!gameEnded) {
+        if(!gameEnded && gameStarted) {
             Timer -= Time.deltaTime;
             if(Timer <= 0) {
                 Timer = 0;
@@ -59,8 +61,6 @@ public class LevelController : MonoBehaviour {
 
         float rotation = Mathf.Deg2Rad * 360 / num;
         float curr = 0;
-        
-        OreAmounts = new int[Names.Length];
 
         var cameras = GameObject.FindGameObjectsWithTag("Camera");
 
@@ -79,7 +79,8 @@ public class LevelController : MonoBehaviour {
             curr += rotation;
         }
 
-        Timer = 60;
+        gameStarted = true;
+        Timer = 6;
     }
 
     public static void EndGame() {
@@ -87,23 +88,17 @@ public class LevelController : MonoBehaviour {
     }
 
     private void EndGame_() {
-
+        SceneManager.LoadScene("Gameover", LoadSceneMode.Single);
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
             string name = other.gameObject.name;
             var plr = other.gameObject.GetComponent<Player>();
-            int ore = plr.Ore;
+            plr.TotalOre += plr.Ore;
             plr.Ore = 0;
             plr.speed = Player.maxSpeed;
             plr.jumpSpeed = Player.maxJumpSpeed;
-
-            for(int i = 0; i < Names.Length; i++)
-                if(Names[i] == name) { 
-                    OreAmounts[i] += ore;
-                    break;
-                }
         }
     }
 }

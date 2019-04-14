@@ -21,8 +21,9 @@ public class UIManager : MonoBehaviour
     public Player p4;
     private static byte numPlayers;
     private byte players;
-    private int time = 0;
     private bool gameStarted;
+
+    private bool inGameOver;
 
     private void Start() {
         DontDestroyOnLoad(this);
@@ -204,7 +205,36 @@ public class UIManager : MonoBehaviour
     private void Update() {
         if(!gameStarted)
             return;
-        if (LevelController.Timer > 0) {
+
+        if(SceneManager.GetActiveScene().name == "Gameover" && !inGameOver) {
+            inGameOver = true;
+            Text gameover = GameObject.Find("GameOver").GetComponent<Text>();
+            //gameover.text += stuff
+
+            var tuples = new List<(string, int)>();
+            switch(players) {
+                case 4:
+                    tuples.Add((p4Name, p4.TotalOre));
+                    goto case 3;
+                case 3:
+                    tuples.Add((p3Name, p3.TotalOre));
+                    goto case 2;
+                case 2:
+                    tuples.Add((p2Name, p2.TotalOre));
+                    goto case 1;
+                case 1:
+                    tuples.Add((p1Name, p1.TotalOre));
+                    break;
+            }
+
+            tuples.Sort((a, b) => b.Item2 - a.Item2);
+
+            foreach(var tuple in tuples) {
+                gameover.text += "\n" + tuple.Item1 + " - " + tuple.Item2;
+            }
+        }
+
+        if (!inGameOver && LevelController.Timer >= 0) {
             if (players == 1) {
                 Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
                 Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
@@ -258,34 +288,7 @@ public class UIManager : MonoBehaviour
                 timer4.text = "Time Left: " + LevelController.Timer.ToString("0.00");
             }
         }
-        else if(SceneManager.GetActiveScene().name == "Gameover" && LevelController.Timer <= 0) {
-            SceneManager.LoadScene("Gameover", LoadSceneMode.Single);
-        }
-        if(SceneManager.GetActiveScene().name == "Gameover" && time == 0) {
-            Text gameover = GameObject.Find("GameOver").GetComponent<Text>();
-            //gameover.text += stuff
 
-            var tuples = new List<(string, int)>();
-            switch(players) {
-                case 4:
-                    tuples[3] = (p4Name, p4.Ore);
-                    goto case 3;
-                case 3:
-                    tuples[2] = (p3Name, p3.Ore);
-                    goto case 2;
-                case 2:
-                    tuples[1] = (p2Name, p2.Ore);
-                    goto case 1;
-                case 1:
-                    tuples[0] = (p1Name, p1.Ore);
-                    break;
-            }
-
-            tuples.Sort((a, b) => a.Item2 - b.Item2);
-
-            foreach(var tuple in tuples) {
-                gameover.text += "\n" + tuple.Item1 + " - " + tuple.Item2;
-            }
-        }
+        
     }
 }
