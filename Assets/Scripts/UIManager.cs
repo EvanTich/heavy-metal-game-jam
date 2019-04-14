@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     private static byte numPlayers;
     private byte players;
 
+    private bool gameStarted;
+
     private void Start() {
         DontDestroyOnLoad(this);
     }
@@ -110,39 +112,54 @@ public class UIManager : MonoBehaviour
         players = 4;
     }
 
+    private void NamesDone() {
+        LevelController.StartGame(p1Name, p2Name, p3Name, p4Name);
+        gameStarted = true;
+        switch(players) {
+            case 4:
+                Camera cam4 = GameObject.Find("Camera4").GetComponent<Camera>();
+                Canvas canvas4 = Instantiate(hudPrefab);
+                canvas4.gameObject.name = "Canvas4";
+                canvas4.worldCamera = cam4;
+                canvas4.planeDistance = 1;
+                canvas4.GetComponentInChildren<Text>().text = "Player Name: " + p4Name;
+                p4 = GameObject.Find(p4Name).GetComponent<Player>();
+                goto case 3;
+            case 3:
+                Camera cam3 = GameObject.Find("Camera3").GetComponent<Camera>();
+                Canvas canvas3 = Instantiate(hudPrefab);
+                canvas3.gameObject.name = "Canvas3";
+                canvas3.worldCamera = cam3;
+                canvas3.planeDistance = 1;
+                canvas3.GetComponentInChildren<Text>().text = "Player Name: " + p3Name;
+                p3 = GameObject.Find(p3Name).GetComponent<Player>();
+                goto case 2;
+            case 2:
+                Camera cam2 = GameObject.Find("Camera2").GetComponent<Camera>();
+                Canvas canvas2 = Instantiate(hudPrefab);
+                canvas2.gameObject.name = "Canvas2";
+                canvas2.worldCamera = cam2;
+                canvas2.planeDistance = 1;
+                canvas2.GetComponentInChildren<Text>().text = "Player Name: " + p2Name;
+                p2 = GameObject.Find(p2Name).GetComponent<Player>();
+                goto case 1;
+            case 1:
+                Canvas canvas1 = Instantiate(hudPrefab);
+                canvas1.gameObject.name = "Canvas1";
+                canvas1.worldCamera = cam1;
+                canvas1.planeDistance = 1;
+                canvas1.GetComponentInChildren<Text>().text = "Player Name: " + p1Name;
+                p1 = GameObject.Find(p1Name).GetComponent<Player>();
+                break;
+        }
+    }
+
     public void ClickedName1() {
         numPlayers--;
         p1Name = GameObject.Find("Canvas1").GetComponentInChildren<InputField>().text;
         Destroy(GameObject.Find("Canvas1"));
         if (numPlayers == 0) {
-            LevelController.StartGame(p1Name, p2Name, p3Name, p4Name);
-            Canvas canvas1 = Instantiate(hudPrefab);
-            canvas1.gameObject.name = "Canvas1";
-            canvas1.worldCamera = cam1;
-            canvas1.planeDistance = 1;
-            canvas1.GetComponentInChildren<Text>().text = "Player Name: " + p1Name;
-            p1 = GameObject.Find(p1Name).GetComponent<Player>();
-            Camera cam2 = GameObject.Find("Camera2").GetComponent<Camera>();
-            Canvas canvas2 = Instantiate(hudPrefab);
-            canvas2.gameObject.name = "Canvas2";
-            canvas2.worldCamera = cam2;
-            canvas2.planeDistance = 1;
-            canvas2.GetComponentInChildren<Text>().text = "Player Name: " + p2Name;
-            p2 = GameObject.Find(p2Name).GetComponent<Player>();
-            Camera cam3 = GameObject.Find("Camera3").GetComponent<Camera>();
-            Canvas canvas3 = Instantiate(hudPrefab);
-            canvas3.gameObject.name = "Canvas3";
-            canvas3.worldCamera = cam3;
-            canvas3.planeDistance = 1;
-            canvas3.GetComponentInChildren<Text>().text = "Player Name: " + p3Name;
-            p3 = GameObject.Find(p3Name).GetComponent<Player>();
-            Camera cam4 = GameObject.Find("Camera4").GetComponent<Camera>();
-            Canvas canvas4 = Instantiate(hudPrefab);
-            canvas4.gameObject.name = "Canvas4";
-            canvas4.worldCamera = cam4;
-            canvas4.planeDistance = 1;
-            canvas4.GetComponentInChildren<Text>().text = "Player Name: " + p4Name;
-            p4 = GameObject.Find(p4Name).GetComponent<Player>();
+            NamesDone();
         }
     }
 
@@ -151,34 +168,7 @@ public class UIManager : MonoBehaviour
         p2Name = GameObject.Find("Canvas2").GetComponentInChildren<InputField>().text;
         Destroy(GameObject.Find("Canvas2"));
         if (numPlayers == 0) {
-            LevelController.StartGame(p1Name, p2Name, p3Name, p4Name);
-            Canvas canvas1 = Instantiate(hudPrefab);
-            canvas1.gameObject.name = "Canvas1";
-            canvas1.worldCamera = cam1;
-            canvas1.planeDistance = 1;
-            canvas1.GetComponentInChildren<Text>().text = "Player Name: " + p1Name;
-            p1 = GameObject.Find(p1Name).GetComponent<Player>();
-            Camera cam2 = GameObject.Find("Camera2").GetComponent<Camera>();
-            Canvas canvas2 = Instantiate(hudPrefab);
-            canvas2.gameObject.name = "Canvas2";
-            canvas2.worldCamera = cam2;
-            canvas2.planeDistance = 1;
-            canvas2.GetComponentInChildren<Text>().text = "Player Name: " + p2Name;
-            p2 = GameObject.Find(p2Name).GetComponent<Player>();
-            Camera cam3 = GameObject.Find("Camera3").GetComponent<Camera>();
-            Canvas canvas3 = Instantiate(hudPrefab);
-            canvas3.gameObject.name = "Canvas3";
-            canvas3.worldCamera = cam3;
-            canvas3.planeDistance = 1;
-            canvas3.GetComponentInChildren<Text>().text = "Player Name: " + p3Name;
-            p3 = GameObject.Find(p3Name).GetComponent<Player>();
-            Camera cam4 = GameObject.Find("Camera4").GetComponent<Camera>();
-            Canvas canvas4 = Instantiate(hudPrefab);
-            canvas4.gameObject.name = "Canvas4";
-            canvas4.worldCamera = cam4;
-            canvas4.planeDistance = 1;
-            canvas4.GetComponentInChildren<Text>().text = "Player Name: " + p4Name;
-            p4 = GameObject.Find(p4Name).GetComponent<Player>();
+            NamesDone();
         }
     }
 
@@ -187,34 +177,7 @@ public class UIManager : MonoBehaviour
         p3Name = GameObject.Find("Canvas3").GetComponentInChildren<InputField>().text;
         Destroy(GameObject.Find("Canvas3"));
         if (numPlayers == 0) {
-            LevelController.StartGame(p1Name, p2Name, p3Name, p4Name);
-            Canvas canvas1 = Instantiate(hudPrefab);
-            canvas1.gameObject.name = "Canvas1";
-            canvas1.worldCamera = cam1;
-            canvas1.planeDistance = 1;
-            canvas1.GetComponentInChildren<Text>().text = "Player Name: " + p1Name;
-            p1 = GameObject.Find(p1Name).GetComponent<Player>();
-            Camera cam2 = GameObject.Find("Camera2").GetComponent<Camera>();
-            Canvas canvas2 = Instantiate(hudPrefab);
-            canvas2.gameObject.name = "Canvas2";
-            canvas2.worldCamera = cam2;
-            canvas2.planeDistance = 1;
-            canvas2.GetComponentInChildren<Text>().text = "Player Name: " + p2Name;
-            p2 = GameObject.Find(p2Name).GetComponent<Player>();
-            Camera cam3 = GameObject.Find("Camera3").GetComponent<Camera>();
-            Canvas canvas3 = Instantiate(hudPrefab);
-            canvas3.gameObject.name = "Canvas3";
-            canvas3.worldCamera = cam3;
-            canvas3.planeDistance = 1;
-            canvas3.GetComponentInChildren<Text>().text = "Player Name: " + p3Name;
-            p3 = GameObject.Find(p3Name).GetComponent<Player>();
-            Camera cam4 = GameObject.Find("Camera4").GetComponent<Camera>();
-            Canvas canvas4 = Instantiate(hudPrefab);
-            canvas4.gameObject.name = "Canvas4";
-            canvas4.worldCamera = cam4;
-            canvas4.planeDistance = 1;
-            canvas4.GetComponentInChildren<Text>().text = "Player Name: " + p4Name;
-            p4 = GameObject.Find(p4Name).GetComponent<Player>();
+            NamesDone();
         }
     }
 
@@ -223,38 +186,14 @@ public class UIManager : MonoBehaviour
         p4Name = GameObject.Find("Canvas4").GetComponentInChildren<InputField>().text;
         Destroy(GameObject.Find("Canvas4"));
         if (numPlayers == 0) {
-            LevelController.StartGame(p1Name, p2Name, p3Name, p4Name);
-            Canvas canvas1 = Instantiate(hudPrefab);
-            canvas1.gameObject.name = "Canvas1";
-            canvas1.worldCamera = cam1;
-            canvas1.planeDistance = 1;
-            canvas1.GetComponentInChildren<Text>().text = "Player Name: " + p1Name;
-            p1 = GameObject.Find(p1Name).GetComponent<Player>();
-            Camera cam2 = GameObject.Find("Camera2").GetComponent<Camera>();
-            Canvas canvas2 = Instantiate(hudPrefab);
-            canvas2.gameObject.name = "Canvas2";
-            canvas2.worldCamera = cam2;
-            canvas2.planeDistance = 1;
-            canvas2.GetComponentInChildren<Text>().text = "Player Name: " + p2Name;
-            p2 = GameObject.Find(p2Name).GetComponent<Player>();
-            Camera cam3 = GameObject.Find("Camera3").GetComponent<Camera>();
-            Canvas canvas3 = Instantiate(hudPrefab);
-            canvas3.gameObject.name = "Canvas3";
-            canvas3.worldCamera = cam3;
-            canvas3.planeDistance = 1;
-            canvas3.GetComponentInChildren<Text>().text = "Player Name: " + p3Name;
-            p3 = GameObject.Find(p3Name).GetComponent<Player>();
-            Camera cam4 = GameObject.Find("Camera4").GetComponent<Camera>();
-            Canvas canvas4 = Instantiate(hudPrefab);
-            canvas4.gameObject.name = "Canvas4";
-            canvas4.worldCamera = cam4;
-            canvas4.planeDistance = 1;
-            canvas4.GetComponentInChildren<Text>().text = "Player Name: " + p4Name;
-            p4 = GameObject.Find(p4Name).GetComponent<Player>();
+            NamesDone();
         }
     }
 
     private void Update() {
+        if(!gameStarted)
+            return;
+
         if (players == 1) {
             Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
             Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
