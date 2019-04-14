@@ -58,14 +58,20 @@ public class LevelController : MonoBehaviour {
         
         OreAmounts = new int[Names.Length];
 
+        var cameras = GameObject.FindGameObjectsWithTag("Camera");
+
         for(int i = 0; i < Names.Length; i++) {
             Names[i] = names[i];
 
-            GameObject.Instantiate(
+            var obj = GameObject.Instantiate(
                 player, 
                 new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
-            ).name = names[i];
+            );
+            obj.name = names[i];
+
+            cameras[i].GetComponent<Target>().target = obj.transform;
+
             curr += rotation;
         }
     }

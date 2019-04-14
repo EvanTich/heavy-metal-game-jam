@@ -4,7 +4,7 @@ using System.Collections;
 public class Target : MonoBehaviour
 {
     [SerializeField]
-    private Transform target;
+    public Transform target;
 
     [SerializeField]
     private Vector3 offsetPosition;
