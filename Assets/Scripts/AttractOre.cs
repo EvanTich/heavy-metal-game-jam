@@ -18,7 +18,7 @@ public class AttractOre : MonoBehaviour {
     void Update()
     {
         foreach(var ore in ores) {
-            if(ore.activeSelf) {
+            if( ore!=null) {
                 Vector3 direction = transform.position - ore.transform.position;
                 ore.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
             }
