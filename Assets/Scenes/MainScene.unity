@@ -184,6 +184,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3647928334041324494, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928334041324494, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1772454394}
+    - target: {fileID: 3647928334041324494, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335071064585, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3647928336053588040, guid: d6f89076a6391e249bbe189c031efe42,
         type: 3}
       propertyPath: cam1

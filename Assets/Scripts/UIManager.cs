@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas1 = Instantiate(nameCanvasPrefab);
         canvas1.gameObject.name = "Canvas1";
         canvas1.worldCamera = cam1;
+        canvas1.planeDistance = 1;
         canvas1.GetComponentInChildren<Button>().onClick.AddListener(ClickedName1);
         numPlayers = 1;
         players = 1;
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas1 = Instantiate(nameCanvasPrefab);
         canvas1.gameObject.name = "Canvas1";
         canvas1.worldCamera = cam1;
+        canvas1.planeDistance = 1;
         canvas1.GetComponentInChildren<Button>().onClick.AddListener(ClickedName1);
         Camera cam2 = Instantiate(camPrefab, cam1.transform);
         cam2.gameObject.name = "Camera2";
@@ -50,6 +52,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas2 = Instantiate(nameCanvasPrefab);
         canvas2.gameObject.name = "Canvas2";
         canvas2.worldCamera = cam2;
+        canvas2.planeDistance = 1;
         canvas2.GetComponentInChildren<Button>().onClick.AddListener(ClickedName2);
         numPlayers = 2;
         players = 2;
@@ -61,6 +64,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas1 = Instantiate(nameCanvasPrefab);
         canvas1.gameObject.name = "Canvas1";
         canvas1.worldCamera = cam1;
+        canvas1.planeDistance = 1;
         canvas1.GetComponentInChildren<Button>().onClick.AddListener(ClickedName1);
         Camera cam2 = Instantiate(camPrefab, cam1.transform);
         cam2.gameObject.name = "Camera2";
@@ -68,6 +72,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas2 = Instantiate(nameCanvasPrefab);
         canvas2.gameObject.name = "Canvas2";
         canvas2.worldCamera = cam2;
+        canvas2.planeDistance = 1;
         canvas2.GetComponentInChildren<Button>().onClick.AddListener(ClickedName2);
         Camera cam3 = Instantiate(camPrefab, cam1.transform);
         cam3.gameObject.name = "Camera3";
@@ -75,6 +80,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas3 = Instantiate(nameCanvasPrefab);
         canvas3.gameObject.name = "Canvas3";
         canvas3.worldCamera = cam3;
+        canvas3.planeDistance = 1;
         canvas3.GetComponentInChildren<Button>().onClick.AddListener(ClickedName3);
         numPlayers = 3;
         players = 3;
@@ -86,6 +92,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas1 = Instantiate(nameCanvasPrefab);
         canvas1.gameObject.name = "Canvas1";
         canvas1.worldCamera = cam1;
+        canvas1.planeDistance = 1;
         canvas1.GetComponentInChildren<Button>().onClick.AddListener(ClickedName1);
         Camera cam2 = Instantiate(camPrefab, cam1.transform);
         cam2.gameObject.name = "Camera2";
@@ -93,6 +100,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas2 = Instantiate(nameCanvasPrefab);
         canvas2.gameObject.name = "Canvas2";
         canvas2.worldCamera = cam2;
+        canvas2.planeDistance = 1;
         canvas2.GetComponentInChildren<Button>().onClick.AddListener(ClickedName2);
         Camera cam3 = Instantiate(camPrefab , cam1.transform);
         cam3.gameObject.name = "Camera3";
@@ -100,6 +108,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas3 = Instantiate(nameCanvasPrefab);
         canvas3.gameObject.name = "Canvas3";
         canvas3.worldCamera = cam3;
+        canvas3.planeDistance = 1;
         canvas3.GetComponentInChildren<Button>().onClick.AddListener(ClickedName3);
         Camera cam4 = Instantiate(camPrefab, cam1.transform);
         cam4.gameObject.name = "Camera4";
@@ -107,6 +116,7 @@ public class UIManager : MonoBehaviour
         Canvas canvas4 = Instantiate(nameCanvasPrefab);
         canvas4.gameObject.name = "Canvas4";
         canvas4.worldCamera = cam4;
+        canvas4.planeDistance = 1;
         canvas4.GetComponentInChildren<Button>().onClick.AddListener(ClickedName4);
         numPlayers = 4;
         players = 4;
