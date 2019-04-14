@@ -47,5 +47,15 @@ MonoBehaviour:
   numberCanvas: {fileID: 0}
   nameCanvasPrefab: {fileID: 1605271470291573178, guid: a45b5f2e0cc38694da07b39ec50a6b96,
     type: 3}
+  hudPrefab: {fileID: 9061218426776969665, guid: e9ea365db0b67fe4abdaf6d1db6b15d2,
+    type: 3}
   camPrefab: {fileID: 1546141896879190332, guid: a91d7ebb7cedcfe4cbf8bd4db6d05c10,
     type: 3}
+  p1Name: 
+  p2Name: 
+  p3Name: 
+  p4Name: 
+  p1: {fileID: 0}
+  p2: {fileID: 0}
+  p3: {fileID: 0}
+  p4: {fileID: 0}

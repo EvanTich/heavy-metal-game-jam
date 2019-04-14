@@ -104,10 +104,6 @@ public class Player : MonoBehaviour {
                 Ore++;
                 //Debug.Log(Ore);
             }
-            else
-            {
-                Debug.Log("ore at max");
-            }
         }
         if (other.gameObject.tag == "Player" && other.gameObject!= gameObject)
         {

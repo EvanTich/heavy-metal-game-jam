@@ -209,7 +209,7 @@ public class UIManager : MonoBehaviour
             Text timer1 = GameObject.Find("Canvas1/Timer").GetComponent<Text>();
 
             resources1.text = "Resource Count: " + p1.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer;
+            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
         }
         if (players == 2) {
             Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
@@ -219,8 +219,8 @@ public class UIManager : MonoBehaviour
 
             resources1.text = "Resource Count: " + p1.Ore;
             resources2.text = "Resource Count: " + p2.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer;
-            timer2.text = "Time Left: " + LevelController.Timer;
+            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
         }
         if (players == 3) {
             Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
@@ -233,9 +233,9 @@ public class UIManager : MonoBehaviour
             resources1.text = "Resource Count: " + p1.Ore;
             resources2.text = "Resource Count: " + p2.Ore;
             resources3.text = "Resource Count: " + p3.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer;
-            timer2.text = "Time Left: " + LevelController.Timer;
-            timer3.text = "Time Left: " + LevelController.Timer;
+            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
         }
         if (players == 4) {
             Text resources1 = GameObject.Find("Canvas1/Resources").GetComponent<Text>();
@@ -251,10 +251,10 @@ public class UIManager : MonoBehaviour
             resources2.text = "Resource Count: " + p2.Ore;
             resources3.text = "Resource Count: " + p3.Ore;
             resources4.text = "Resource Count: " + p4.Ore;
-            timer1.text = "Time Left: " + LevelController.Timer;
-            timer2.text = "Time Left: " + LevelController.Timer;
-            timer3.text = "Time Left: " + LevelController.Timer;
-            timer4.text = "Time Left: " + LevelController.Timer;
+            timer1.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer2.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer3.text = "Time Left: " + LevelController.Timer.ToString("0.00");
+            timer4.text = "Time Left: " + LevelController.Timer.ToString("0.00");
         }
     }
 }
