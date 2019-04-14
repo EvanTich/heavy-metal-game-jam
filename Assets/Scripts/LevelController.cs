@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelController : MonoBehaviour {
 
     private static LevelController _instance;
-
+    AudioSource music;
     public static float Timer { get; private set; }
     private static bool gameEnded;
 
@@ -30,6 +30,8 @@ public class LevelController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        music = GetComponent<AudioSource>();
+        music.Play();
         _instance = this;
     }
 
