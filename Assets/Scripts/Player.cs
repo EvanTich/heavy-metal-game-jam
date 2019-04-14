@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
             transform.Rotate(0, Input.GetAxis("Horizontal" + num) * rotSpeed * Time.deltaTime, 0);
             if(characterController.isGrounded) {
 
-                moveDirection = Vector3.forward * Input.GetAxis("Vertical" + num);
+                moveDirection = Vector3.left * Input.GetAxis("Vertical" + num);
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;
                 if(Input.GetButton("Jump" + num)) {
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour {
         }
 
         if(animator != null)
-            animator.SetFloat("speed", characterController.velocity.magnitude); // maybe will work better
+            animator.SetFloat("speed", characterController.velocity.x + characterController.velocity.z); // maybe will work better
 
         // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;
@@ -103,10 +103,6 @@ public class Player : MonoBehaviour {
                 jumpSpeed -= jumpSpeed * .05f;
                 Ore++;
                 //Debug.Log(Ore);
-            }
-            else
-            {
-                Debug.Log("ore at max");
             }
         }
         if (other.gameObject.tag == "Player" && other.gameObject!= gameObject)
