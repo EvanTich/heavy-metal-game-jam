@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.35803157, g: 0.31895223, b: 0.26737764, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,6 +243,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClickedNumber4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335366950019, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335366950019, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_HorizontalAxis
+      value: Horizontal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647928335366950019, guid: d6f89076a6391e249bbe189c031efe42,
+        type: 3}
+      propertyPath: m_VerticalAxis
+      value: Vertical1
       objectReference: {fileID: 0}
     - target: {fileID: 3647928336053588040, guid: d6f89076a6391e249bbe189c031efe42,
         type: 3}
@@ -964,6 +979,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 25851609659535485, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: players.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 25851609659535485, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: players.Array.data[0]
+      value: 
+      objectReference: {fileID: 2887317355055687603, guid: 758fd94c3323e9d4aac4b6429e3a137b,
+        type: 3}
+    - target: {fileID: 25851609659535485, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: players.Array.data[1]
+      value: 
+      objectReference: {fileID: 3318112755580930067, guid: 7e51be39cef9aab42bb410f7b6aa5300,
+        type: 3}
+    - target: {fileID: 25851609659535485, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: players.Array.data[2]
+      value: 
+      objectReference: {fileID: 6201199041506693265, guid: 5424204b20c735048aad64ef557a16e2,
+        type: 3}
+    - target: {fileID: 25851609659535485, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: players.Array.data[3]
+      value: 
+      objectReference: {fileID: 6700266012805448691, guid: 81b33c113aacb5649ab76376e7240edc,
+        type: 3}
     - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
         type: 3}
       propertyPath: level
