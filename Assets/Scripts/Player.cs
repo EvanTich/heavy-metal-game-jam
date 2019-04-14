@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    
+
+    private Animator animator;
     private CharacterController characterController;
-
-    public float strengthOfAttraction = 3f;
-
-    public static float constSpeed = 15f;
+    
     public float minSpeed = 5f;
-    public float verticalVelocity;
 
     private Vector3 moveDirection = Vector3.zero;
-    private CharacterController controller;
 
     public float speed = 15f;
     public float rotSpeed = 90f;
@@ -33,9 +29,9 @@ public class Player : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         num = ++total;
-    
     }
 
     // Update is called once per frame
@@ -45,10 +41,10 @@ public class Player : MonoBehaviour {
 
         // rotate character with horizontal keys:
         if(!stunned) {
-            transform.Rotate(0, Input.GetAxis("Horizontal" + num) * 90f * Time.deltaTime, 0);
+            transform.Rotate(0, Input.GetAxis("Horizontal" + num) * rotSpeed * Time.deltaTime, 0);
             if(characterController.isGrounded) {
 
-                moveDirection = Vector3.forward * Input.GetAxis("Vertical" + num);
+                moveDirection = Vector3.left * Input.GetAxis("Vertical" + num);
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;
                 if(Input.GetButton("Jump" + num)) {
@@ -60,6 +56,8 @@ public class Player : MonoBehaviour {
             if(stunnedTimer <= 0)
                 stunned = false;
         }
+
+        animator.SetFloat("speed", moveDirection.magnitude);
 
         // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;

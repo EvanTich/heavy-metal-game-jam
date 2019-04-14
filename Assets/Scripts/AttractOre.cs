@@ -5,27 +5,20 @@ using UnityEngine;
 public class AttractOre : MonoBehaviour {
 
     public float strengthOfAttraction = 3f;
-    public bool inside = false;
-    public bool insidePlayer = true;
-    GameObject ore;
+    IList<GameObject> ores;
     GameObject other;
     // Start is called before the first frame update
     void Start()
     {
-
+        ores = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (inside)
-        {
-            if (ore != null)
-            {
-                Vector3 direction = transform.position - ore.transform.position;
-                ore.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
-            }
+        foreach(var ore in ores) { 
+            Vector3 direction = transform.position - ore.transform.position;
+            ore.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
         }
     }
 
@@ -33,8 +26,7 @@ public class AttractOre : MonoBehaviour {
     {
         if (other.gameObject.tag == "PickUp")
         {
-            inside = true;
-            this.ore = other.gameObject;
+            ores.Add(other.gameObject);
         }
     }
 
@@ -42,8 +34,7 @@ public class AttractOre : MonoBehaviour {
     {
         if (other.gameObject.tag == "PickUp")
         {
-            inside = false;
-            this.ore = null;
+            ores.Remove(other.gameObject);
         }
        
     }

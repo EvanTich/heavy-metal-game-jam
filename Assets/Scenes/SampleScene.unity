@@ -401,5 +401,45 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 1253690919}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: ores.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: ores.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: ores.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: rock
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: boulder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: stalagmite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: column
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791055190827332613, guid: 015efe30b6f297a4aa705dea794ac818,
+        type: 3}
+      propertyPath: amountOfStuff
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015efe30b6f297a4aa705dea794ac818, type: 3}

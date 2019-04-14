@@ -135,11 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 0}
   ores:
-  - {fileID: 100000, guid: 126a7d18be2c73d47a2291508d39e8a5, type: 3}
-  - {fileID: 100000, guid: 6fca3840d13470a49a5a52c9f132af22, type: 3}
-  - {fileID: 100000, guid: 5b788642d37d2e644bdb07cdd50edbc7, type: 3}
-  - {fileID: 100000, guid: 3a02f34b2573f1040879a82784a3ac93, type: 3}
-  - {fileID: 100000, guid: 2be4e28e147810344868339304b88bc7, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   rock: {fileID: 0}
   boulder: {fileID: 0}
   stalagmite: {fileID: 0}
