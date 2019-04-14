@@ -135,7 +135,7 @@ MonoBehaviour:
   rotSpeed: 90
   jumpSpeed: 30
   gravity: 40
-  num: NULL
+  num: 
   insidePlayer: 0
 --- !u!64 &239013680
 MeshCollider:
@@ -451,12 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 893398418}
-  ores:
-  - {fileID: 2823664178066412866, guid: adbe018a7e7dc1345bd36bf61c56d2c6, type: 3}
-  - {fileID: 7237912520214900864, guid: 3e8e167c0c48f174abacc8925d84490b, type: 3}
-  - {fileID: 7895084661907710033, guid: 3f2e92073d5e6cb438a0481cc248953d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  ores: []
   rock: {fileID: 1921535437266879502, guid: 7aeada07d53027d4fa3dbc6a0cd08111, type: 3}
   boulder: {fileID: 2509358015513624397, guid: a7469bcc3f2f511468ed206eb4bf84f0, type: 3}
   stalagmite: {fileID: 9194765154364519457, guid: 147f3ac651a3c2f41bf1784cd9fe949d,
