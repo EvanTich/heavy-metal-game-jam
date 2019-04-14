@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
-    Rigidbody rb;
-    CharacterController characterController;
+    
+    private CharacterController characterController;
 
     public float strengthOfAttraction = 3f;
 
@@ -25,17 +24,17 @@ public class Player : MonoBehaviour {
     public bool insidePlayer = false;
     GameObject other;
 
+    private bool stunned;
+    private float stunnedTimer;
+
     public static int total = 0;
-
-
 
     public int Ore { get; set; }
 
     // Start is called before the first frame update
     void Start() {
         characterController = GetComponent<CharacterController>();
-        total++;
-        num = total;
+        num = ++total;
     
     }
 
@@ -45,33 +44,41 @@ public class Player : MonoBehaviour {
         //with characterController
 
         // rotate character with horizontal keys:
-        transform.Rotate(0, Input.GetAxis("Horizontal" + num) * 90f * Time.deltaTime, 0);
-        if (characterController.isGrounded)
-        {
-      
-            moveDirection = Vector3.forward * Input.GetAxis("Vertical" + num);
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-            if (Input.GetButton("Jump" + num))
-            {
-                moveDirection.y = jumpSpeed;
+        if(!stunned) {
+            transform.Rotate(0, Input.GetAxis("Horizontal" + num) * 90f * Time.deltaTime, 0);
+            if(characterController.isGrounded) {
+
+                moveDirection = Vector3.forward * Input.GetAxis("Vertical" + num);
+                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection *= speed;
+                if(Input.GetButton("Jump" + num)) {
+                    moveDirection.y = jumpSpeed;
+                }
             }
+        } else {
+            stunnedTimer -= Time.deltaTime;
+            if(stunnedTimer <= 0)
+                stunned = false;
         }
+
         // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;
         // convert velocity to displacement and move character:
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if (insidePlayer)
+        if (insidePlayer && other != null)
         {
-            if (other != null && Ore>0)
+            Player plr = other.GetComponent<Player>();
+            if (Ore > plr.Ore)
             {
                 //MAKE THEM NOTH DROP SOME ORE
-                //Debug.Log("BOTH PLAYERS DROPPED SOME ORE, NOW HOLD: " + Ore);
-                speed += speed * .05f;
-                jumpSpeed += jumpSpeed * .05f;
-                Ore--;
-                Debug.Log("BOTH PLAYERS DROPPED SOME ORE, NOW HOLD: " + Ore);
+                int dropped = Ore / 2;
+                speed += dropped * speed * .05f;
+                jumpSpeed += dropped * jumpSpeed * .05f;
+                Ore -= dropped;
+                other.GetComponent<Player>().Ore += dropped;
+                stunned = true;
+                stunnedTimer = dropped / 2;
                 insidePlayer = false;
             }
 
@@ -79,33 +86,6 @@ public class Player : MonoBehaviour {
 
 
     }
-
-
-   
-    /*void OnCollisionEnter(Collision col)
-    {
-        //destroy it when it hits
-        if (col.gameObject.tag == "PickUp")
-        {
-            //add max iron count
-            if (speed > minSpeed)
-            {
-                Destroy(col.gameObject);
-                speed -= speed *.05f;
-                jumpSpeed -= jumpSpeed * .05f;
-                Ore++;
-                Debug.Log(Ore);
-            }
-            else
-            {
-                Debug.Log("ore at max");
-            }
-        }
-        if (col.gameObject.tag == "Player")
-        {
-            Debug.Log("HIT A PLAYER IN PLAYER CLASS!!!");
-        }
-    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -144,16 +124,5 @@ public class Player : MonoBehaviour {
             this.other = null;
         }
     }
-
-
-    /*private void OnTriggerStay(Collider other)
-    {
-
-        if (other.gameObject.tag == "PickUp")
-        {
-            Vector3 direction = transform.position - other.transform.position;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(strengthOfAttraction * direction);
-            Debug.Log(strengthOfAttraction + " " + direction);
-        }
-    }*/
+    
 }

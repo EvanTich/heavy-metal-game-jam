@@ -140,10 +140,10 @@ MonoBehaviour:
   - {fileID: 100000, guid: 5b788642d37d2e644bdb07cdd50edbc7, type: 3}
   - {fileID: 100000, guid: 3a02f34b2573f1040879a82784a3ac93, type: 3}
   - {fileID: 100000, guid: 2be4e28e147810344868339304b88bc7, type: 3}
-  rock: {fileID: 100000, guid: b82a5d11add469e418a3c474c793ed7d, type: 3}
-  boulder: {fileID: 100000, guid: 15ccaee74f9fee24fbf4f7e21d8f9442, type: 3}
-  stalagmite: {fileID: 100000, guid: 1f17e5e20452e044cb0dd76666ce4003, type: 3}
-  column: {fileID: 100000, guid: 776a68659299ab548ac25d6c2eb99045, type: 3}
+  rock: {fileID: 0}
+  boulder: {fileID: 0}
+  stalagmite: {fileID: 0}
+  column: {fileID: 0}
   seed: 0
   amountOfStuff: 500
   patchAmount: 10
