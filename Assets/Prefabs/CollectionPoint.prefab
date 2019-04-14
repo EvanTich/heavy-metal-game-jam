@@ -120,11 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b8f6bce2b7f214c8ab78bff66af828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 2887317355055687603, guid: 758fd94c3323e9d4aac4b6429e3a137b, type: 3}
-  - {fileID: 3318112755580930067, guid: 7e51be39cef9aab42bb410f7b6aa5300, type: 3}
-  - {fileID: 6201199041506693265, guid: 5424204b20c735048aad64ef557a16e2, type: 3}
-  - {fileID: 6700266012805448691, guid: 81b33c113aacb5649ab76376e7240edc, type: 3}
+  player: {fileID: 8376208699690573200, guid: 770e673963206d74dac3f9abcce9bee3, type: 3}
 --- !u!114 &2791055190827332613
 MonoBehaviour:
   m_ObjectHideFlags: 0

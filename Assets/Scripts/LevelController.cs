@@ -10,13 +10,12 @@ public class LevelController : MonoBehaviour {
 
     public static float Timer { get; private set; }
     private static bool gameEnded;
-    private static bool gameStarted;
 
     public static string[] Names { get; private set; }
     public static int[] OreAmounts { get; private set; }
 
     [SerializeField]
-    private GameObject player;
+    private GameObject[] players;
 
     static LevelController() {
         Timer = 6000;
@@ -34,7 +33,7 @@ public class LevelController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(!gameEnded && gameStarted) {
+        if(!gameEnded) {
             Timer -= Time.deltaTime;
             if(Timer <= 0) {
                 Timer = 0;
@@ -49,7 +48,6 @@ public class LevelController : MonoBehaviour {
     }
 
     private void StartGame_(params string[] names) {
-
         int num = 0;
         foreach(var name in names) {
             if (name != "")
@@ -70,7 +68,7 @@ public class LevelController : MonoBehaviour {
             Names[i] = names[i];
 
             var obj = GameObject.Instantiate(
-                player, 
+                players[i], 
                 new Vector3(3 * Mathf.Cos(curr) + transform.position.x, transform.position.y + 5, 3 * Mathf.Sin(curr) + transform.position.z), 
                 Quaternion.Euler(0, curr, 0)
             );
@@ -81,7 +79,6 @@ public class LevelController : MonoBehaviour {
             curr += rotation;
         }
 
-        gameStarted = true;
         Timer = 60;
     }
 

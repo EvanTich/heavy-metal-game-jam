@@ -455,7 +455,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3647928336053588040}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickedNumber4
         m_Mode: 1
         m_Arguments:
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3647928336053588040}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickedNumber1
         m_Mode: 1
         m_Arguments:
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3647928336053588040}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickedNumber2
         m_Mode: 1
         m_Arguments:
@@ -987,7 +987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3647928336053588040}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickedNumber3
         m_Mode: 1
         m_Arguments:
@@ -1029,66 +1029,6 @@ Transform:
   m_Children:
   - {fileID: 3647928334041324495}
   - {fileID: 3647928335366950021}
-  - {fileID: 3647928336053588039}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3647928336053588038
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3647928336053588039}
-  - component: {fileID: 3647928336053588040}
-  m_Layer: 0
-  m_Name: UI Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3647928336053588039
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647928336053588038}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.277893, y: -48.758495, z: -1263.6016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3647928335782165465}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3647928336053588040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647928336053588038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5de07d0022de34e9e34d343bb81b1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam1: {fileID: 0}
-  numberCanvas: {fileID: 3647928334041324494}
-  nameCanvasPrefab: {fileID: 1605271470291573178, guid: a45b5f2e0cc38694da07b39ec50a6b96,
-    type: 3}
-  hudPrefab: {fileID: 9061218426776969665, guid: e9ea365db0b67fe4abdaf6d1db6b15d2,
-    type: 3}
-  camPrefab: {fileID: 1546141896879190332, guid: a91d7ebb7cedcfe4cbf8bd4db6d05c10,
-    type: 3}
-  p1Name: 
-  p2Name: 
-  p3Name: 
-  p4Name: 
-  p1: {fileID: 0}
-  p2: {fileID: 0}
-  p3: {fileID: 0}
-  p4: {fileID: 0}
